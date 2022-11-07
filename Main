@@ -1,0 +1,201 @@
+class Thread1 extends Thread{
+public void run(){
+        System.out.println("WELCOME TO STUDENT MANAGEMENT SYSTEM PROGRAM");
+}
+}
+public class FinalProject {
+    Scanner sc=new Scanner(System.in);
+String[] arr1 =new String[20];
+String[] arr2 =new String[20];
+String[] arr3 =new String[20];
+String[] arr4 =new String[20];
+
+
+
+
+    int total=0;
+    void enter(){
+int choice;
+System.out.println("How many students do you want to enter: ");
+choice =sc.nextInt();
+        if(total==0){
+            total=total+choice;
+            for(int i=0;i<choice;i++){
+                System.out.println("\nEnter data of students: "+i+1);
+System.out.println("Enter name: ");
+arr1[i]=sc.next();
+System.out.println("Enter RollNo: ");
+arr2[i]=sc.next();
+System.out.println("Enter Course: ");
+arr3[i]=sc.next();
+System.out.println("Enter Department: ");
+arr4[i]=sc.next();
+
+
+}
+        }
+else{
+for(int i=total;i<total+choice;i++){
+
+                System.out.println("\nEnter data of students: "+i+1);
+System.out.println( "Enter name: ");
+arr1[i]=sc.next();
+System.out.println( "Enter RollNo: ");
+arr2[i]=sc.next();
+
+System.out.println("Enter course: ");
+arr3[i]=sc.next();
+
+System.out.println("Enter Department: ");
+arr4[i]=sc.next();
+
+}
+            total=total+choice;
+}
+    }
+void show(){
+for(int i=0;i<total;i++){
+            System.out.println("Data of students: "+i+1);
+System.out.println( "Name: "+arr1[i]);
+System.out.println("RollNo: "+arr2[i]);
+System.out.println("Course: "+arr3[i]);
+System.out.println("Department: "+arr4[i]);
+
+}
+
+    }
+void search(){
+
+        System.out.println(  "Enter rollno of students which you want to search: ");
+String rollno=sc.next();
+        for(int i=0;i<total;i++){
+if(rollno.equals(arr2[i])){
+                System.out.println("Data of students: "+i+1);
+System.out.println( "Name: "+arr1[i]);
+System.out.println("RollNo: "+arr2[i]);
+System.out.println("Course: "+arr3[i]);
+System.out.println("Department: "+arr4[i]);
+
+}
+
+        }
+    }
+void update(){
+        String rollno;
+System.out.println("Enter RollNo of students which you want to Update: ");
+rollno=sc.next();
+        for(int i=0;i<total;i++){
+if(rollno.equals(arr2[i])){
+                System.out.println("previous data:");
+System.out.println("Data of students: "+i+1);;
+System.out.println("Name: "+arr1[i]);
+System.out.println("RollNo: "+arr2[i]);
+System.out.println("Course: "+arr3[i]);
+System.out.println("Department: "+arr4[i]);
+
+System.out.println("\nEnter new data: ");
+
+System.out.println( "Enter name: ");
+arr1[i]=sc.next();
+System.out.println( "Enter RollNo: ");
+arr2[i]=sc.next();
+
+System.out.println("Enter course: ");
+arr3[i]=sc.next();
+
+System.out.println("Enter Department: ");
+arr4[i]=sc.next();
+
+
+}
+        }
+    }
+void DeleteRecord(){
+int a;
+System.out.println("press 1 to delete full record");
+System.out.println("press 2 to delete specific record");
+a=sc.nextInt();
+        if(a==1)
+        {
+            total=0;
+System.out.println("All record is deleted");
+}
+else if(a==2){
+            String rollno;
+System.out.println("Enter the rollno which you want to delete");
+rollno=sc.next();
+            for(int i=0;i<total;i++){
+if(rollno.equals(arr2[i])){
+for(int j=i;j<total;j++){
+                        arr1[j]=arr1[j+1];
+arr2[j]=arr2[j+1];
+arr3[j]=arr3[j+1];
+arr4[j]=arr4[j+1];
+
+}
+                    total--;
+System.out.println("your required is deleted..!!");
+}
+            }
+        }
+
+    }
+void exit(){
+
+    }
+public static void main(String[] args) {
+        Thread1 thread1=new Thread1();
+thread1.start();
+FinalProject t=new FinalProject();
+Scanner sc=new Scanner(System.in);
+        int value;
+        while(true){
+            System.out.println("press 1 to enter data");
+System.out.println("press 2 to show data");
+System.out.println("press 3 to search data");
+System.out.println("press 4 to uptade data");
+System.out.println("press 5 to delete data");
+System.out.println("press 6 to exit");
+
+
+            try{
+                value=sc.nextInt();
+                switch(value)
+                {
+
+case 1:
+                        t.enter();
+                        break;
+                    case 2:
+                        t.show();
+                        break;
+                    case 3:
+                        t.search();
+                        break;
+                    case 4:
+                        t. update();
+                        break;
+                    case 5:
+                        t.DeleteRecord();
+                        break;
+                    case 6:
+                        t. exit();
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+                        break;
+}
+            }
+catch (InputMismatchException e){
+                System.out.println("please input integer number");
+main(null);
+}
+
+
+        }
+
+    }
+}
+
+
+
